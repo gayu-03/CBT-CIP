@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="task1.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    
+      <table>
+        <h1 class="text-center mt-5">EVENTLITEZ</h1>
+     <tr>
+        <div class="form-group row mt-5 ms-5">
+            <label class="col-sm-2 col-form-label text-center">Event Name:</label>
+            <div class="col-sm-7">
+              <input type="text" id="name" name="name" class="form-control">
+            </div>
+          </div>
+     </tr>   
+    <tr>
+        <div class="form-group row mt-3 ms-5">
+            <label class="col-sm-2 col-form-label text-center">Event Date:</label>
+            <div class="col-sm-7">
+              <input type="date" name="date" id="date" class="form-control">
+            </div>
+          </div>
+    </tr>
+   
+    <tr>
+        <div class="form-group row mt-3 ms-5">
+            <label class="col-sm-2 col-form-label text-center">Event Time:</label>
+            <div class="col-sm-7">
+              <input type="time" name="time" id="time" class="form-control">
+            </div>
+          </div>
+    </tr>
+    <tr>
+        <div class="form-group row mt-3 ms-5">
+            <label class="col-sm-2 col-form-label text-center">Event Location:</label>
+            <div class="col-sm-7">
+              <input type="text" name="location" id="location" class="form-control">
+            </div>
+          </div>
+        
+    </tr>
+    <tr>
+        <div class="form-group row mt-3 ms-5">
+            <label class="col-sm-2 col-form-label text-center"></label>
+            <div class="col-sm-7">
+                <button onclick="createObjectEvent()" id="add" class="btn-primary">Create Event</button>
+            </div>
+          </div>
+        
+    </tr>
+   
+   </table>
+      <div id="result">
+
+      </div>
+       
+    <script>
+        var event=[];
+        var name,date,time,location;
+
+        function createObjectEvent() {
+           
+            var name=document.getElementById("name").value;
+            var date=document.getElementById("date").value;
+            var time=document.getElementById("time").value;
+            var location=document.getElementById("location").value;
+           
+            var create = {
+                name: name,
+                date:date,
+                time:time,
+                location:location
+                
+            };
+
+            event.push(create);
+           display();
+
+           var name=document.getElementById("name").value=" "
+            var date=document.getElementById("date").value=" "
+            var time=document.getElementById("time").value=" "
+            var location=document.getElementById("location").value=" "
+
+          
+          
+        }
+
+        function display(){
+            
+            var html="";
+            html +=`<h3 class="text-center">Upcoming Event</h3> `;
+                for(var i=0;i<event.length;i++){
+                    html+=
+                   `  
+                   <section style="margin-bottom: 20px;">
+                    <label id="n">${i+1}</label>
+                    <label id="n">${event[i]["name"]}</label>
+                    <label id="n">${event[i]["date"]}</label>
+                      <label id="n">${event[i]["time"]}</label>
+                    <label id="n">@ ${event[i]["location"]}</label>
+                       
+                   </section>
+                `;
+                  }
+                  html+=
+              
+               document.getElementById("result").innerHTML=html;
+        }
+       
+    </script>
+</body>
+</html>
